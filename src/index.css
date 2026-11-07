@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+/* Paleta oficial CHOFY (misma que ChofyColors en la app Flutter) */
+@theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy: #0b1f3a;
+  --color-navy-900: #071528;
+  --color-teal: #0f4c5c;
+  --color-teal-light: #0f6d7a;
+  --color-gold: #c6a55e;
+  --color-gold-alt: #c6a54a;
+  --color-olive: #90aa43;
+  --color-mist: #f4f6f8;
+  --color-slate-text: #6b7a8d;
+  --color-line: #e0e6ed;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-late: float 6s ease-in-out 1.5s infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  @apply bg-white font-sans text-navy antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* Fondo con cuadrícula sutil para secciones oscuras */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, #e3c98a 0%, var(--color-gold) 45%, #a8873f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
